@@ -90,10 +90,17 @@
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:14px;
+    flex-wrap:nowrap;
   }
-  @media (max-width:700px){ .nav-inner{ padding:14px 22px; } }
-  .nav-logo{ display:flex; align-items:center; gap:10px; }
-  .nav-logo img{ height:60px; width:auto; }
+  @media (max-width:700px){ .nav-inner{ padding:12px 18px; gap:10px; } }
+  .nav-logo{ display:flex; align-items:center; gap:10px; min-width:0; }
+  .nav-logo img{ height:60px; width:auto; flex-shrink:0; }
+  .nav-logo span{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
   .nav-links{
     display:flex;
     gap:32px;
@@ -119,8 +126,23 @@
     border-radius:2px;
     letter-spacing:0.02em;
     white-space:nowrap;
+    flex-shrink:0;
   }
+  .nav-cta .cta-short{ display:none; }
   @media (max-width:840px){ .nav-links{ display:none; } }
+
+  /* ---------- Mobile header fix (logo + CTA must never collide) ---------- */
+  @media (max-width:700px){
+    .nav-logo img{ height:34px; }
+    .nav-logo span{ font-size:0.72rem !important; max-width:34vw; }
+    .nav-cta{ font-size:0.7rem; padding:8px 12px; }
+  }
+  @media (max-width:420px){
+    .nav-logo span{ display:none; }
+    .nav-cta .cta-full{ display:none; }
+    .nav-cta .cta-short{ display:inline; }
+    .nav-cta{ padding:8px 14px; }
+  }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -532,7 +554,7 @@
       <a href="#differentiators">Difference</a>
       <a href="#engagement">Engagement</a>
     </nav>
-    <a href="#contact" class="nav-cta">Start a Conversation</a>
+    <a href="#contact" class="nav-cta"><span class="cta-full">Start a Conversation</span><span class="cta-short">Contact</span></a>
   </div>
 </header>
 
