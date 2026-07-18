@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zenviora Labs — Trusted Intelligence. Visionary Transformation.</title>
+<meta name="description" content="Zenviora Labs is a Business Intelligence and Transformation partner turning fragmented operations into connected, data-driven, AI-enabled ecosystems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0E1A;
+    --ink-soft:#111729;
+    --paper:#F6F7FA;
+    --paper-dim:#EDEFF4;
+    --blue:#1230AE;
+    --blue-bright:#2440D6;
+    --teal:#16B4C4;
+    --teal-bright:#22D3DE;
+    --slate:#5B6472;
+    --slate-light:#8A93A3;
+    --line-dark:rgba(255,255,255,0.12);
+    --line-light:rgba(10,14,26,0.10);
+    --white:#ffffff;
+    --grad: linear-gradient(120deg, var(--blue) 0%, var(--blue-bright) 38%, var(--teal) 100%);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--teal); color:var(--ink);}
+
+  h1,h2,h3,.display{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--teal);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:22px;
+    height:1px;
+    background:var(--teal);
+    display:inline-block;
+  }
+  p{ color:var(--slate); line-height:1.7; margin:0; }
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+  @media (max-width:700px){ .wrap{ padding:0 22px; } }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(10,14,26,0.72);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line-dark);
+    transition:background .3s ease;
+  }
+  .nav-inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:16px 40px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  @media (max-width:700px){ .nav-inner{ padding:14px 22px; } }
+  .nav-logo{ display:flex; align-items:center; gap:10px; }
+  .nav-logo img{ height:60px; width:auto; }
+  .nav-links{
+    display:flex;
+    gap:32px;
+    font-size:0.85rem;
+    color:#C9CEDB;
+  }
+  .nav-links a{ position:relative; padding:4px 0; transition:color .2s ease; }
+  .nav-links a:hover{ color:#fff; }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:-2px;
+    width:0; height:1px;
+    background:var(--teal);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+  .nav-cta{
+    font-size:0.8rem;
+    font-family:'Space Mono', monospace;
+    color:var(--ink);
+    background:var(--teal-bright);
+    padding:9px 18px;
+    border-radius:2px;
+    letter-spacing:0.02em;
+    white-space:nowrap;
+  }
+  @media (max-width:840px){ .nav-links{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:var(--ink);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    padding-top:120px;
+    padding-bottom:80px;
+    overflow:hidden;
+  }
+  .hero canvas{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    opacity:0.55;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse 80% 60% at 70% 20%, rgba(22,180,196,0.16), transparent 60%),
+               radial-gradient(ellipse 60% 50% at 10% 90%, rgba(18,48,174,0.22), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+    width:100%;
+  }
+  @media (max-width:700px){ .hero-inner{ padding:0 22px; } }
+  .hero-eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--teal-bright);
+    margin-bottom:26px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero-eyebrow::before{ content:""; width:26px; height:1px; background:var(--teal-bright); }
+  h1.headline{
+    font-size:clamp(2.6rem, 5.6vw, 5rem);
+    line-height:1.06;
+    max-width:15ch;
+    font-weight:500;
+  }
+  h1.headline em{
+    font-style:italic;
+    background:linear-gradient(100deg, var(--teal-bright), #6EE7EF);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero-sub{
+    margin-top:30px;
+    max-width:640px;
+    font-size:1.15rem;
+    color:#B9C0D0;
+    line-height:1.65;
+  }
+  .hero-support{
+    margin-top:18px;
+    max-width:600px;
+    font-size:0.95rem;
+    color:#7C8598;
+    font-style:italic;
+    font-family:'Newsreader', serif;
+  }
+  .hero-actions{
+    margin-top:44px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .btn-primary{
+    background:var(--teal-bright);
+    color:var(--ink);
+    padding:14px 28px;
+    font-size:0.85rem;
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.02em;
+    border-radius:2px;
+    transition:transform .2s ease, box-shadow .2s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 30px -8px rgba(34,211,222,0.5); }
+  .btn-ghost{
+    color:#fff;
+    padding:14px 10px;
+    font-size:0.85rem;
+    font-family:'Space Mono', monospace;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .hero-tags{
+    margin-top:64px;
+    display:flex;
+    gap:34px;
+    flex-wrap:wrap;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.06em;
+    color:#6B7488;
+    text-transform:uppercase;
+  }
+  .hero-tags span b{ color:#DCE0EA; font-weight:400; }
+
+  /* ---------- POSITIONING STRIP ---------- */
+  .strip{
+    background:var(--ink-soft);
+    border-top:1px solid var(--line-dark);
+    border-bottom:1px solid var(--line-dark);
+    padding:26px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .strip-track{
+    display:inline-flex;
+    gap:60px;
+    animation:scroll-strip 32s linear infinite;
+  }
+  .strip-track span{
+    font-family:'Space Mono', monospace;
+    font-size:0.85rem;
+    color:#8A93A3;
+    display:inline-flex;
+    align-items:center;
+    gap:60px;
+  }
+  .strip-track span i{ color:var(--teal-bright); font-style:normal; margin-right:60px;}
+  @keyframes scroll-strip{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding:120px 0; position:relative; }
+  @media (max-width:700px){ section{ padding:80px 0; } }
+  .section-head{ max-width:680px; margin-bottom:64px; }
+  .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.8rem); margin-top:18px; line-height:1.18; }
+  .section-head p.lead{ margin-top:20px; font-size:1.05rem; color:var(--slate); max-width:56ch; }
+
+  /* ---------- VISION / MISSION ---------- */
+  .vm-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    border:1px solid var(--line-light);
+  }
+  @media (max-width:840px){ .vm-grid{ grid-template-columns:1fr; } }
+  .vm-cell{
+    padding:56px 48px;
+    border-right:1px solid var(--line-light);
+  }
+  .vm-grid .vm-cell:last-child{ border-right:none; }
+  @media (max-width:840px){
+    .vm-cell{ border-right:none; border-bottom:1px solid var(--line-light); padding:44px 30px; }
+    .vm-grid .vm-cell:last-child{ border-bottom:none; }
+  }
+  .vm-cell h3{ font-size:1.5rem; margin-top:14px; line-height:1.35; }
+  .vm-cell .num{ font-family:'Space Mono', monospace; font-size:0.75rem; color:var(--slate-light); }
+  .vm-cell p{ margin-top:20px; }
+
+  /* ---------- WHAT WE DO ---------- */
+  .wwd{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:70px;
+    align-items:start;
+  }
+  @media (max-width:840px){ .wwd{ grid-template-columns:1fr; gap:36px; } }
+  .wwd-visual{
+    border:1px solid var(--line-light);
+    background:var(--white);
+    padding:34px;
+    position:relative;
+  }
+  .wwd-visual svg{ width:100%; height:auto; display:block; }
+  .wwd-caption{
+    margin-top:14px;
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:var(--slate-light);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+  .philosophy{
+    margin-top:26px;
+    padding:30px 32px;
+    border-left:2px solid var(--teal);
+    background:var(--paper-dim);
+  }
+  .philosophy .eyebrow{ margin-bottom:12px; }
+  .philosophy h3{ font-size:1.3rem; font-style:italic; }
+  .philosophy p{ margin-top:14px; }
+
+  /* ---------- CAPABILITIES ---------- */
+  .cap-dark{ background:var(--ink); color:#fff; }
+  .cap-dark .section-head p.lead{ color:#9BA3B5; }
+  .cap-dark .eyebrow{ color:var(--teal-bright); }
+  .cap-dark .eyebrow::before{ background:var(--teal-bright); }
+
+  .cap-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line-dark);
+    border:1px solid var(--line-dark);
+  }
+  @media (max-width:840px){ .cap-grid{ grid-template-columns:1fr; } }
+  .cap-card{
+    background:var(--ink);
+    padding:44px 42px;
+    transition:background .3s ease;
+  }
+  .cap-card:hover{ background:#0E1424; }
+  .cap-index{
+    font-family:'Space Mono', monospace;
+    font-size:0.75rem;
+    color:var(--teal-bright);
+    letter-spacing:0.08em;
+  }
+  .cap-card h3{
+    font-size:1.5rem;
+    color:#fff;
+    margin-top:16px;
+    line-height:1.3;
+  }
+  .cap-card .cap-sub{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    color:#93E4EA;
+    font-size:1rem;
+    margin-top:8px;
+    display:block;
+  }
+  .cap-card p{ margin-top:18px; color:#AEB4C4; font-size:0.95rem; }
+  .cap-meta{ margin-top:24px; padding-top:20px; border-top:1px solid var(--line-dark); }
+  .cap-meta-row{ display:flex; gap:14px; margin-bottom:12px; font-size:0.82rem; }
+  .cap-meta-row:last-child{ margin-bottom:0; }
+  .cap-meta-label{
+    font-family:'Space Mono', monospace;
+    font-size:0.66rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--slate-light);
+    min-width:88px;
+    padding-top:2px;
+  }
+  .cap-meta-value{ color:#C4C9D6; line-height:1.6; }
+
+  /* ---------- DIFFERENTIATORS ---------- */
+  .diff-list{ border-top:1px solid var(--line-light); }
+  .diff-row{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+    padding:30px 0;
+    border-bottom:1px solid var(--line-light);
+    align-items:baseline;
+  }
+  @media (max-width:700px){ .diff-row{ grid-template-columns:1fr; gap:8px; } }
+  .diff-verb{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--blue);
+  }
+  .diff-text b{ color:var(--ink); font-weight:600; }
+  .diff-text{ font-size:1.02rem; }
+
+  /* ---------- ENGAGEMENT MODELS ---------- */
+  .models-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:24px;
+  }
+  @media (max-width:960px){ .models-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:600px){ .models-grid{ grid-template-columns:1fr; } }
+  .model-card{
+    border:1px solid var(--line-light);
+    padding:32px 26px;
+    background:var(--white);
+    transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+  .model-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 20px 40px -20px rgba(18,48,174,0.25);
+    border-color:var(--teal);
+  }
+  .model-card h4{
+    font-family:'Newsreader', serif;
+    font-size:1.15rem;
+    color:var(--blue);
+  }
+  .model-card p{ margin-top:12px; font-size:0.88rem; }
+  .model-mark{ font-family:'Space Mono', monospace; font-size:0.65rem; color:var(--teal); letter-spacing:0.05em;}
+
+  .delivery-tags{
+    margin-top:44px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  .delivery-tags span{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    padding:8px 14px;
+    border:1px solid var(--line-light);
+    color:var(--slate);
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- FINAL / CTA ---------- */
+  .final{
+    background:var(--ink);
+    color:#fff;
+    text-align:center;
+    padding:150px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .final::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(22,180,196,0.14), transparent 70%);
+  }
+  .final-inner{ position:relative; z-index:2; max-width:800px; margin:0 auto; padding:0 30px;}
+  .final .eyebrow{ justify-content:center; color:var(--teal-bright); }
+  .final .eyebrow::before{ background:var(--teal-bright); }
+  .final h2{
+    margin-top:24px;
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    line-height:1.35;
+  }
+  .final p.tagline{
+    margin-top:30px;
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:1.3rem;
+    color:#93E4EA;
+  }
+  .final-actions{ margin-top:46px; display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    border-top:1px solid var(--line-dark);
+    padding:56px 0 36px;
+  }
+  .foot-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:24px;
+    padding-bottom:36px;
+    border-bottom:1px solid var(--line-dark);
+  }
+  .foot-top img{ height:32px; }
+  .foot-links{ display:flex; gap:30px; font-size:0.85rem; color:#9BA3B5; flex-wrap:wrap; }
+  .foot-bottom{
+    display:flex;
+    justify-content:space-between;
+    padding-top:26px;
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:#5B6478;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.is-visible{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .strip-track{ animation:none; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--teal-bright);
+    outline-offset:3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <img src="assets/zenviora-transparant.png" alt="Zenviora Labs symbol">
+      <span style="font-family:'Space Mono',monospace; font-size:0.95rem; letter-spacing:0.03em; color:#fff;">ZENVIORA <span style="color:var(--teal-bright);">LABS</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#vision">Vision</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#differentiators">Difference</a>
+      <a href="#engagement">Engagement</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a Conversation</a>
+  </div>
+</header>
+
+<section class="hero">
+  <canvas id="network"></canvas>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Business Intelligence &amp; Transformation Partner</div>
+    <h1 class="headline">Trust your data. <em>Envision what's next.</em> Amplify your impact.</h1>
+    <p class="hero-sub">Zenviora Labs helps organizations transform operations, decisions, and experiences through intelligent ecosystems powered by data, automation, modern applications, and AI.</p>
+    <p class="hero-support">From visibility to velocity, from insight to action — we engineer the capabilities that enable organizations to scale confidently in a rapidly evolving world.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a Conversation →</a>
+      <a href="#capabilities" class="btn-ghost">See Our Capabilities</a>
+    </div>
+    <div class="hero-tags">
+      <span><b>Trust</b> · Guided by Vision</span>
+      <span><b>Vision</b> · Empowered by Impact</span>
+      <span><b>Impact</b> · Built to Last</span>
+    </div>
+  </div>
+</section>
+
+<div class="strip" aria-hidden="true">
+  <div class="strip-track" id="stripTrack">
+    <span>
+      <i>—</i>Trusted Intelligence. Visionary Transformation. Lasting Impact.
+      <i>—</i>Turning Complexity into Clarity.
+      <i>—</i>Engineering the Future of Business.
+    </span>
+    <span>
+      <i>—</i>Trusted Intelligence. Visionary Transformation. Lasting Impact.
+      <i>—</i>Turning Complexity into Clarity.
+      <i>—</i>Engineering the Future of Business.
+    </span>
+  </div>
+</div>
+
+<!-- VISION / MISSION -->
+<section id="vision">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Vision &amp; Mission</div>
+      <h2>To create intelligent organizations built on trust, guided by vision, and empowered by impact.</h2>
+      <p class="lead">We envision a world where every organization operates with complete clarity, makes informed decisions in real time, and scales seamlessly — building a lasting, sustainable advantage in a dynamic digital world.</p>
+    </div>
+
+    <div class="vm-grid reveal">
+      <div class="vm-cell">
+        <div class="num">Vision</div>
+        <h3>Trusted data. Transformative innovation. Sustainable advantage.</h3>
+        <p>Through trusted data and transformative innovation, we help businesses build a lasting, sustainable competitive advantage — operating with clarity instead of guesswork.</p>
+      </div>
+      <div class="vm-cell">
+        <div class="num">Mission</div>
+        <h3>Turning complexity into clarity.</h3>
+        <p>We help organizations discover untapped opportunities, simplify complex processes, enable faster decision-making, unlock business intelligence at scale, and accelerate growth through sustainable innovation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO / PHILOSOPHY -->
+<section style="padding-top:0;">
+  <div class="wrap">
+    <div class="wwd">
+      <div class="reveal">
+        <div class="eyebrow">What We Actually Do</div>
+        <h2 style="font-size:clamp(1.6rem,2.6vw,2.1rem); margin-top:16px; line-height:1.35;">Fragmented information. Manual processes. Delayed reporting. Underused technology.</h2>
+        <p style="margin-top:18px;">These bottlenecks make it difficult to scale operations and gain clear visibility into performance. We solve these challenges by engineering intelligent business ecosystems where data, technology, people, and processes work together seamlessly.</p>
+
+        <div class="philosophy">
+          <div class="eyebrow">Core Philosophy</div>
+          <h3>Technology should create momentum.</h3>
+          <p>Instead of focusing merely on systems and deployment, we focus on outcomes, adoption, and measurable business value — guiding organizations to invest in lasting capabilities rather than temporary technology fixes.</p>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="wwd-visual">
+          <svg viewBox="0 0 480 380" xmlns="http://www.w3.org/2000/svg" id="clarityDiagram">
+            <!-- scattered fragments left -->
+            <g stroke="#C7CCD8" stroke-width="1.4" fill="none" opacity="0.9">
+              <line x1="30" y1="40" x2="70" y2="60"></line>
+              <line x1="70" y1="60" x2="40" y2="100"></line>
+              <line x1="40" y1="100" x2="90" y2="120"></line>
+              <line x1="20" y1="160" x2="60" y2="150"></line>
+              <line x1="60" y1="150" x2="30" y2="200"></line>
+              <line x1="90" y1="120" x2="70" y2="180"></line>
+              <line x1="30" y1="230" x2="80" y2="240"></line>
+              <line x1="80" y1="240" x2="50" y2="280"></line>
+            </g>
+            <g fill="#5B6472">
+              <circle cx="30" cy="40" r="4"></circle>
+              <circle cx="70" cy="60" r="3"></circle>
+              <circle cx="40" cy="100" r="4.5"></circle>
+              <circle cx="90" cy="120" r="3"></circle>
+              <circle cx="20" cy="160" r="3.5"></circle>
+              <circle cx="60" cy="150" r="4"></circle>
+              <circle cx="30" cy="200" r="3"></circle>
+              <circle cx="70" cy="180" r="3.5"></circle>
+              <circle cx="30" cy="230" r="4"></circle>
+              <circle cx="80" cy="240" r="3"></circle>
+              <circle cx="50" cy="280" r="4.5"></circle>
+            </g>
+            <!-- converging lines -->
+            <g stroke="url(#gradLine)" stroke-width="1.6" fill="none" opacity="0.85">
+              <path d="M90,120 C170,140 220,170 250,190" />
+              <path d="M70,180 C160,190 220,190 250,195" />
+              <path d="M80,240 C170,230 220,210 250,200" />
+              <path d="M40,100 C150,120 220,160 250,185" />
+            </g>
+            <!-- resolved node right -->
+            <g transform="translate(250,190)">
+              <circle r="46" fill="none" stroke="url(#gradLine)" stroke-width="1.4"></circle>
+              <circle r="30" fill="none" stroke="url(#gradLine)" stroke-width="1" opacity="0.5"></circle>
+              <circle r="7" fill="#16B4C4"></circle>
+            </g>
+            <g fill="#8A93A3" font-family="Space Mono, monospace" font-size="10" letter-spacing="1">
+              <text x="10" y="310">FRAGMENTED SIGNALS</text>
+              <text x="300" y="150">RESOLVED CLARITY</text>
+            </g>
+            <defs>
+              <linearGradient id="gradLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#1230AE"/>
+                <stop offset="100%" stop-color="#16B4C4"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="wwd-caption">Fig.01 — Disconnected operations, engineered into one visible system</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="cap-dark">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Enterprise Transformation Capabilities</div>
+      <h2>Four disciplines. One connected ecosystem.</h2>
+      <p class="lead">Each capability stands on its own — and compounds when combined, turning fragmented operations into a single intelligent system.</p>
+    </div>
+
+    <div class="cap-grid reveal">
+      <div class="cap-card">
+        <div class="cap-index">01 / DATA &amp; INTELLIGENCE</div>
+        <h3>Building trusted information foundations<span class="cap-sub">Turning data into strategic decisions</span></h3>
+        <p>Modern organizations generate enormous amounts of data, yet many struggle to transform it into actionable intelligence. We help build trusted data foundations and enterprise-wide visibility.</p>
+        <div class="cap-meta">
+          <div class="cap-meta-row"><span class="cap-meta-label">Impact Areas</span><span class="cap-meta-value">Enterprise Data Strategy, Master Data Management, Executive Dashboards, Predictive Insights, Scenario Planning, Operational Visibility Platforms</span></div>
+          <div class="cap-meta-row"><span class="cap-meta-label">Outcomes</span><span class="cap-meta-value">Trusted enterprise-wide information, real-time visibility, faster decision-making, greater agility</span></div>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-index">02 / AUTOMATION &amp; OPERATIONS</div>
+        <h3>Designing intelligent operations<span class="cap-sub">That scale efficiently</span></h3>
+        <p>Organizations cannot scale effectively when critical processes rely on manual effort and disconnected workflows. We streamline operations and orchestrate workflows for control at scale.</p>
+        <div class="cap-meta">
+          <div class="cap-meta-row"><span class="cap-meta-label">Impact Areas</span><span class="cap-meta-value">Workflow Automation, Process Orchestration, Event-Driven Automation, Robotic &amp; Intelligent Automation, Continuous Improvement</span></div>
+          <div class="cap-meta-row"><span class="cap-meta-label">Outcomes</span><span class="cap-meta-value">Reduced manual effort, higher workforce productivity, lower operational costs, faster process execution</span></div>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-index">03 / DIGITAL EXPERIENCES</div>
+        <h3>Creating connected experiences<span class="cap-sub">For employees, customers &amp; stakeholders</span></h3>
+        <p>Exceptional experiences drive engagement and long-term value. We design modern digital platforms that connect people and information, using AI to understand sentiment and improve it.</p>
+        <div class="cap-meta">
+          <div class="cap-meta-row"><span class="cap-meta-label">Impact Areas</span><span class="cap-meta-value">Experience Portals, Digital Workplaces, Enterprise Listening Programs, Sentiment Analytics, AI-Powered Recommendations</span></div>
+          <div class="cap-meta-row"><span class="cap-meta-label">Outcomes</span><span class="cap-meta-value">Stronger customer loyalty, improved engagement, better collaboration, actionable feedback insights</span></div>
+        </div>
+      </div>
+
+      <div class="cap-card">
+        <div class="cap-index">04 / AI &amp; MICROSOFT INNOVATION</div>
+        <h3>Accelerating transformation<span class="cap-sub">Through Microsoft &amp; responsible AI</span></h3>
+        <p>Organizations face growing pressure to modernize and leverage AI responsibly. We help maximize the Microsoft ecosystem while introducing practical, secure, scalable AI capabilities.</p>
+        <div class="cap-meta">
+          <div class="cap-meta-row"><span class="cap-meta-label">Impact Areas</span><span class="cap-meta-value">Generative AI &amp; Copilot Solutions, Agentic AI, Knowledge Management, Microsoft Fabric, Power Platform Applications</span></div>
+          <div class="cap-meta-row"><span class="cap-meta-label">Outcomes</span><span class="cap-meta-value">Accelerated transformation, maximized Microsoft ROI, secure AI adoption, future-ready capabilities</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFFERENTIATORS -->
+<section id="differentiators">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Our Differentiators</div>
+      <h2>What sets the work apart.</h2>
+    </div>
+    <div class="diff-list reveal">
+      <div class="diff-row">
+        <div class="diff-verb">Delivering</div>
+        <div class="diff-text"><b>Capability</b> — We move beyond isolated projects to build sustainable, long-term business capabilities.</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-verb">Creating</div>
+        <div class="diff-text"><b>Visibility</b> — We do more than build reports; we create true operational clarity.</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-verb">Engineering</div>
+        <div class="diff-text"><b>Flow</b> — We go beyond task automation to architect seamless business momentum.</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-verb">Augmenting</div>
+        <div class="diff-text"><b>Potential</b> — We leverage AI not just as a tool, but as a catalyst to elevate human performance.</div>
+      </div>
+      <div class="diff-row">
+        <div class="diff-verb">Enabling</div>
+        <div class="diff-text"><b>Evolution</b> — We implement technology to drive continuous business evolution.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT MODELS -->
+<section id="engagement" style="background:var(--paper-dim);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Engagement Models</div>
+      <h2>Choose how we work together.</h2>
+      <p class="lead">Every engagement is designed around outcomes — whether you need a fast proof of concept or a long-term transformation partner.</p>
+    </div>
+
+    <div class="models-grid reveal">
+      <div class="model-card">
+        <div class="model-mark">01</div>
+        <h4>Velocity Sprint™</h4>
+        <p>Rapid, outcome-focused engagements delivering measurable business value within weeks. Ideal for executive visibility, automation opportunities, and AI proof-of-concepts.</p>
+      </div>
+      <div class="model-card">
+        <div class="model-mark">02</div>
+        <h4>Transformation Partnership™</h4>
+        <p>Strategic multi-phase initiatives focused on organization-wide modernization.</p>
+      </div>
+      <div class="model-card">
+        <div class="model-mark">03</div>
+        <h4>Innovation Studio™</h4>
+        <p>An ongoing partnership to continuously explore, prototype, validate, and scale ideas into business solutions.</p>
+      </div>
+      <div class="model-card">
+        <div class="model-mark">04</div>
+        <h4>Managed Intelligence™</h4>
+        <p>A subscription model providing continuous support, optimization, and governance for digital ecosystems.</p>
+      </div>
+    </div>
+
+    <div class="delivery-tags reveal">
+      <span>Fixed Fee Projects</span>
+      <span>Time &amp; Materials</span>
+      <span>Managed Services</span>
+      <span>Team Augmentation</span>
+      <span>Outcome-Based Engagements</span>
+      <span>Dedicated Transformation Pods™</span>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL POSITIONING / CTA -->
+<section id="contact" class="final">
+  <div class="final-inner">
+    <div class="eyebrow">Final Positioning</div>
+    <h2>Zenviora Labs is a Trusted Intelligence and Digital Evolution Partner — helping organizations transform fragmented operations into connected, data-driven, AI-enabled ecosystems.</h2>
+    <p class="tagline">Trust what matters. See what others miss. Create impact that lasts.</p>
+    <div class="final-actions">
+      <a href="mailto:hello@zenviora.com" class="btn-primary">Start a Conversation →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <img src="assets/zenviora-symbol-only-transparant.png" alt="Zenviora Labs">
+      <nav class="foot-links">
+        <a href="#vision">Vision</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#differentiators">Difference</a>
+        <a href="#engagement">Engagement</a>
+      </nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Zenviora Labs. Trust · Vision · Impact.</span>
+      <span>Turning complexity into clarity.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el=>io.observe(el));
+
+  // Hero network canvas — nodes drifting + connecting lines (data -> clarity motif)
+  const canvas = document.getElementById('network');
+  const ctx = canvas.getContext('2d');
+  let W, H, nodes = [];
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth * devicePixelRatio;
+    H = canvas.height = canvas.offsetHeight * devicePixelRatio;
+  }
+  function initNodes(){
+    nodes = [];
+    const count = Math.min(70, Math.floor((canvas.offsetWidth * canvas.offsetHeight) / 18000));
+    for(let i=0;i<count;i++){
+      nodes.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.25*devicePixelRatio,
+        vy: (Math.random()-0.5)*0.25*devicePixelRatio,
+        r: (Math.random()*1.4+0.6)*devicePixelRatio
+      });
+    }
+  }
+  function step(){
+    ctx.clearRect(0,0,W,H);
+    const maxDist = 130*devicePixelRatio;
+    for(let i=0;i<nodes.length;i++){
+      const n = nodes[i];
+      n.x += n.vx; n.y += n.vy;
+      if(n.x<0||n.x>W) n.vx*=-1;
+      if(n.y<0||n.y>H) n.vy*=-1;
+    }
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const a=nodes[i], b=nodes[j];
+        const dx=a.x-b.x, dy=a.y-b.y;
+        const dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist<maxDist){
+          const alpha = (1-dist/maxDist)*0.35;
+          const grad = ctx.createLinearGradient(a.x,a.y,b.x,b.y);
+          grad.addColorStop(0, `rgba(18,48,174,${alpha})`);
+          grad.addColorStop(1, `rgba(22,180,196,${alpha})`);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1*devicePixelRatio*0.6;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+    for(const n of nodes){
+      ctx.beginPath();
+      ctx.arc(n.x,n.y,n.r,0,Math.PI*2);
+      ctx.fillStyle = 'rgba(147,228,234,0.7)';
+      ctx.fill();
+    }
+    if(!prefersReduced) requestAnimationFrame(step);
+  }
+
+  function boot(){
+    resize();
+    initNodes();
+    if(prefersReduced){ step(); } else { step(); }
+  }
+  window.addEventListener('resize', ()=>{ resize(); initNodes(); });
+  boot();
+</script>
+
+</body>
+</html>
